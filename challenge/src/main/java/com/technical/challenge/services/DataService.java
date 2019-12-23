@@ -39,7 +39,7 @@ public class DataService {
         return combinationsList; 
     }
     
-    public Data combinations(Integer phoneNumber, Integer pageNo, Integer pageSize){
+    public Data combinations(Long phoneNumber, Integer pageNo, Integer pageSize){
     	String numberString = String.valueOf(phoneNumber);
     	List<String> combinationsList= allCombinations(numberString);
     	
