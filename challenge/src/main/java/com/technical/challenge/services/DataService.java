@@ -44,13 +44,13 @@ public class DataService {
     	List<String> combinationsList= allCombinations(numberString);
     	
     	Data finalData = new Data();
-    	
     	int CombinationSize = combinationsList.size();
+    	
+    	finalData.setCount(CombinationSize);
     	if (CombinationSize > (pageNo * pageSize)) {
     		Integer startIndex = (pageNo == 1? 0 : ((pageNo-1)*pageSize));
         	Integer endIndex = pageNo * pageSize;
 
-        	finalData.setCount(CombinationSize);
         	finalData.setCombinations(combinationsList.subList(startIndex, endIndex));
         	return finalData;
     	} else {

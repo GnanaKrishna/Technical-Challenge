@@ -94,20 +94,29 @@
 
 <div class="content" role="main">
     <div class="card highlight-card card-small">
-      <a style="color: #333;">Enter a number:</a> &nbsp;&nbsp;
-      <a class="tab">
+      <span style="color: #333;">Enter a number:</span> &nbsp;&nbsp;
+      <span class="tab">
         <form ng-controller="cntrl">
           <input type="text" class="form-control" (keyup.enter)="fetchData($event.target.value)" placeholder="Enter 7 or 10 digit no.">
         </form>
-      </a>&nbsp;&nbsp;
-      <a><font size="1">Click 'Enter'</font></a>
+      </span>&nbsp;&nbsp;&nbsp;&nbsp;
+      <span><font size="1" color="black">Click 'Enter'</font></span>
     </div>
     <div *ngIf="errorMessage">
       <font color="red">Please enter 7 or 10 digit number</font>
     </div>
-  
+
     <div class="card-container" *ngIf="allPossibleCombinations"> 
-      <a>All possible Combinations {{number}} are: <font color="Green">{{allPossibleCombinations.count}}</font></a>
+      <span>All possible Combinations for "{{number}}" are: <font color="Green">{{allPossibleCombinations.count}}</font></span>
+    </div>
+
+    <div>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+      <ul class="pagination pagination" *ngIf="allPossibleCombinations"> 
+          <li><a>Page No.</a></li> &nbsp;&nbsp;
+          <li><a><input value= "1" [(ngModel)]="pageNo" (keyup)="fetchData(number)" size="3"></a></li>
+        </ul>
     </div>
     <div *ngIf="allPossibleCombinations">
       <ul *ngFor="let combinations of allPossibleCombinations.combinations">

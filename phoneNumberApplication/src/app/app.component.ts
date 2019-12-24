@@ -12,8 +12,13 @@ export class AppComponent {
   number: any;
   allPossibleCombinations: Object;
   errorMessage: boolean;
+  pageNo: number;
+  pageSize: number;
 
-  constructor(private appService: AppService){}
+  constructor(private appService: AppService){
+    this.pageNo = 1;
+    this.pageSize = 20;
+  }
  
   fetchData(number:any) {
     const pattern = /[0-9]*/;
@@ -21,7 +26,8 @@ export class AppComponent {
 
     if (pattern.test(inputChar) && (number.toString().length ==7 || number.toString().length ==10)) {
       this.errorMessage= false;
-      this.appService.fetchData(number).subscribe(
+      this.number= number;
+      this.appService.fetchData(number, this.pageNo, this.pageSize).subscribe(
         data => { this.  allPossibleCombinations= data},
         err => console.error(err)
       ); 
